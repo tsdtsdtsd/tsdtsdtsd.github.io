@@ -2,7 +2,7 @@ baseURL = 'https://tsdtsdtsd.github.io/'
 languageCode = 'en'
 title = 'a blog'
 theme = "hugo-theme-m10c"
-summarylength = 1
+summaryLength = 1
 enableEmoji = true
 
 [[menu.main]]
