@@ -1,0 +1,70 @@
+.app-header {
+  padding: 2em 2.5em;
+  background: $darkest-color;
+  text-align: center;
+}
+
+// .app-header-avatar {
+//   width: 15rem;
+//   height: 15rem;
+//   border-radius: 100%;
+//   border: 0.5rem solid $primary-color;
+// }
+
+.app-container {
+  padding: 2rem;
+}
+
+.app-header-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2em;
+  color: $lightest-color;
+
+  a:not(:last-child) {
+    margin-right: 0.4em;
+  }
+}
+
+.app-header-title {
+  color: $lightest-color;
+  display: block;
+  font-size: 2em;
+  // margin: 0.67em 0 0 0;
+  font-weight: bold;
+}
+
+.app-footer {
+  padding: 1.5rem;
+  text-align: center;
+  max-width: 65rem;
+  margin-left: auto;
+  margin-right: auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.app-footer p {
+  padding: 0em;
+  margin: 0.5em 0 0 0;
+}
+
+.app-footer-social {
+
+}
+
+@media (min-width: 940px) {
+  // .app-header {
+  //   position: fixed;
+  //   top: 0;
+  //   left: 0;
+  //   width: 20rem;
+  //   min-height: 100vh;
+  // }
+
+  .app-container {
+    max-width: 65rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

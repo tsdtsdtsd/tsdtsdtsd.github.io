@@ -1,0 +1,117 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  line-height: 1.6;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  font-weight: 500;
+  font-size: 1.2em;
+  background: $dark-color;
+  color: $light-color;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: $lightest-color;
+}
+
+h2, h3, h4, h5, h6 {
+  margin-top: 3em;
+}
+
+p {
+  margin: 1.5rem 0;
+}
+
+a {
+  color: $primary-color;
+  transition: color 0.35s;
+  text-decoration: none;
+
+  &:hover {
+    color: $lightest-color;
+  }
+}
+
+// Browsers seem to use a smaller default font-size with monospaced code
+// blocks (like 80% of the size of normal text) and that looks pretty bad with
+// small inline code-blocks in the middle of normal text (mainly because of
+// the very noticeable difference in x-height). This CSS corrects that problem.
+code {
+  font-family: monospace,monospace;
+  font-size: 1em;
+  color: $light-color;
+  background-color: rgba($light-color, .1);
+  padding: 0.1em 0.25em;
+
+  // Fixes iOS font sizing anomaly
+  text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+pre {
+  font-size: 1rem;
+  line-height: 1.2em;
+  margin: 0;
+  overflow: auto;
+
+  // A larger monospaced block of text (that isn't mixed with normal text)
+  // generally looks heavier than normal text with the same font size. For this
+  // reason using a smaller monospaced font size makes sense in this situation.
+  code {
+    font-size: 0.9em;
+    background-color: unset;
+    padding: 0;
+  }
+}
+
+::selection {
+  background: rgba($light-color, .25);
+}
+::-moz-selection {
+  background: rgba($light-color, .25);
+}
+
+table {
+  border-collapse: collapse;
+  border: 1px solid $darkest-color;
+	text-align: center;
+	vertical-align: middle;
+  margin-bottom: 2rem;
+}
+
+th, td {
+  border: 1px solid $darkest-color;
+	padding: 8px;
+}
+
+thead th {
+  width: 25%;
+}
+
+thead {
+	background-color: $darkest-color;
+	color: white;
+	font-size: 0.875rem;
+	// text-transform: uppercase;
+	letter-spacing: 2%;
+}
+
+tbody {
+  color: $light-color;
+  background-color: $dark-color;
+}
+
+// tbody tr:nth-child(odd) {
+//   background-color: $darkest-color;
+// }
+
+// tbody tr:nth-child(even) {
+//   background-color: $dark-color;
+// }

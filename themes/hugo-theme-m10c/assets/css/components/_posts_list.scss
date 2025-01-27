@@ -1,0 +1,46 @@
+.posts-list {
+  padding: 0;
+}
+
+.posts-list-item {
+  list-style: none;
+  padding: 2.8em 0;
+
+  &:not(:last-child) {
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
+  }
+
+}
+
+.read-more {
+  // display: block;
+  margin-top: 1em;
+  // font-size: 1.1em;
+  // text-align: right;
+  font-weight: bold;
+  background-color: rgba($darkest-color, .5);
+  padding: 0.4em 0.9em 0.4em 0.6em;
+
+  .icon {
+    vertical-align: middle;
+  }
+}
+
+.posts-list-item-description {
+  display: flex;
+  align-items: center;
+  font-size: 0.8em;
+
+  > .icon {
+    margin-right: 0.4em;
+  }
+}
+
+.posts-list-item-separator {
+  margin: 0 0.4em;
+}
+
+.posts-list-item-title {
+  font-size: 1.2em;
+  font-weight: 600;
+}

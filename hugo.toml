@@ -1,0 +1,33 @@
+baseURL = 'https://tsdtsdtsd.github.io/'
+languageCode = 'en'
+title = 'a blog'
+theme = "hugo-theme-m10c"
+summarylength = 1
+enableEmoji = true
+
+[[menu.main]]
+  identifier = "tags"
+  name = "Tags"
+  url = "/tags/"
+
+[[menu.main]]
+  identifier = "categories"
+  name = "Categories"
+  url = "/categories/"
+
+[taxonomies]
+  category = 'categories'
+  series = 'series'
+  tag = 'tags'
+
+[pagination]
+  pagerSize = 6
+
+[params]
+#   author = "John Doe"
+#   description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+  menu_item_separator = " | "
+  [[params.social]]
+    icon = "brand-github"
+    name = "Github"
+    url = "https://github.com/tsdtsdtsd"

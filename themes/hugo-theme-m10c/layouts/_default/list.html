@@ -1,0 +1,47 @@
+{{ define "main" }}
+  <article>
+    <!-- {{ with .Title -}}<h1>{{- . -}}</h1>{{- end }} -->
+    {{ with .Content -}}<div class="post-content">{{- . -}}</div>{{- end }}
+    <ul class="posts-list">
+      {{ range where .Paginator.Pages "Type" "!=" "page" }}
+        <li class="posts-list-item">
+          <a class="posts-list-item-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
+          <span class="posts-list-item-description">
+            {{ if .Params.categories }}
+              {{ partial "icon.html" (dict "ctx" $ "name" "folder") }}
+              {{- range .Params.categories -}}
+                {{ with $.Site.GetPage (printf "/%s/%s" "categories" . ) }}
+                  <a class="category" href="{{ .RelPermalink }}">{{ .Title }}</a>
+                  <span class="posts-list-item-separator">|</span>
+                {{ end }}
+              {{- end }}
+            {{ end }}
+            {{ partial "icon.html" (dict "ctx" $ "name" "calendar") }}
+            {{ .PublishDate.Format "Jan 2, 2006" }}
+            <span class="posts-list-item-separator">|</span>
+            {{ partial "icon.html" (dict "ctx" $ "name" "clock") }}
+            {{ .ReadingTime }} min read
+          </span>
+          <span class="posts-list-item-description">
+            
+            {{ if .Params.tags }}
+              <!-- <span class="posts-list-item-separator">|</span> -->
+              {{ partial "icon.html" (dict "ctx" $ "name" "tag") }}
+              {{- range .Params.tags -}}
+                {{ with $.Site.GetPage (printf "/%s/%s" "tags" . ) }}
+                  <a class="tag" href="{{ .RelPermalink }}">#{{ .Title | lower }}</a>
+                {{- end }}
+              {{- end }}
+            {{ end }}
+
+          </span>
+          <p class="posts-list-item-excerpt">{{ .Summary  }}</p>
+          {{ if .Truncated }}
+            <span><a href="{{ .RelPermalink }}" class="read-more">{{ partial "icon.html" (dict "ctx" $ "name" "chevron-right") }}Read full post </a></span>
+          {{ end }}
+        </li>
+      {{ end }}
+    </ul>
+    {{ partial "pagination.html" $ }}
+  </article>
+{{ end }}
