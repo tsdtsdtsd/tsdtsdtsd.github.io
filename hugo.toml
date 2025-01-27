@@ -10,10 +10,10 @@ enableEmoji = true
   name = "Tags"
   url = "/tags/"
 
-[[menu.main]]
-  identifier = "categories"
-  name = "Categories"
-  url = "/categories/"
+# [[menu.main]]
+#   identifier = "categories"
+#   name = "Categories"
+#   url = "/categories/"
 
 [taxonomies]
   category = 'categories'

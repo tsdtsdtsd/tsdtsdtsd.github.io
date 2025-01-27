@@ -7,6 +7,7 @@
         <li class="posts-list-item">
           <a class="posts-list-item-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
           <span class="posts-list-item-description">
+            {{- /*
             {{ if .Params.categories }}
               {{ partial "icon.html" (dict "ctx" $ "name" "folder") }}
               {{- range .Params.categories -}}
@@ -16,6 +17,7 @@
                 {{ end }}
               {{- end }}
             {{ end }}
+            */ -}}
             {{ partial "icon.html" (dict "ctx" $ "name" "calendar") }}
             {{ .PublishDate.Format "Jan 2, 2006" }}
             <span class="posts-list-item-separator">|</span>
