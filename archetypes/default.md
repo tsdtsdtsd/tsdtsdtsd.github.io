@@ -1,5 +1,9 @@
 +++
 date = '{{ .Date }}'
-draft = true
+modified = '{{ .Date }}'
 title = '{{ replace .File.ContentBaseName "-" " " | title }}'
+draft = true
+
+categories = ['Development']
+tags = []
 +++
