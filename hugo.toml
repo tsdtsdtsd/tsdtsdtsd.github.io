@@ -31,3 +31,20 @@ enableEmoji = true
     icon = "brand-github"
     name = "Github"
     url = "https://github.com/tsdtsdtsd"
+
+[markup]
+  [markup.highlight]
+    # anchorLineNos = false
+    # codeFences = true
+    # guessSyntax = false
+    # hl_Lines = ''
+    # hl_inline = false
+    # lineAnchors = ''
+    # lineNoStart = 1
+    lineNos = true
+    lineNumbersInTable = true
+    # noClasses = true
+    # style = 'monokai'
+    style = 'nordic'
+    # tabWidth = 4
+    # wrapperClass = 'highlight'

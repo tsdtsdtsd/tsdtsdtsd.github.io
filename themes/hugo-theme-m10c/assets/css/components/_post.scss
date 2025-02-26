@@ -21,10 +21,19 @@
   }
 
   & > pre,
-  .highlight > pre,
-  .highlight > div {
+  .highlight > pre {
     border-left: 0.4em solid rgba($primary-color, .8);
     padding: 1em 1em;
+  }
+
+  .highlight > div {
+    padding: 1em 1em;
+  }
+
+  .highlight {
+    tbody {
+      background-color: unset;
+    }
   }
 
   blockquote {
