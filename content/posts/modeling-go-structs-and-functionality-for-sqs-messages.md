@@ -26,7 +26,7 @@ SQS messages are pretty simple: put some data in, get some data out. Simple, but
 > 
 > Amazon SQS does not throw an exception or completely reject the message if it contains invalid characters. Instead, it replaces those invalid characters with `U+FFFD` before storing the message in the queue, as long as the message body contains at least one valid character.
 > 
-> <cite>source: [API Reference](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_SendMessage.html)</cite>
+> <cite>Source: [API Reference](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_SendMessage.html)</cite>
 
 Let's create a simple struct for our data and prepare it for JSON:
 
@@ -34,7 +34,7 @@ Let's create a simple struct for our data and prepare it for JSON:
 package message
 
 type WebhookJob struct {
-    TargetID int `json:"target-id"`
+    TargetID int    `json:"target-id"`
     Payload  []byte `json:"payload"`
 }
 ```
@@ -47,15 +47,25 @@ So let's create a new entity for attributes and add basic functionality:
 
 ```go
 type Attributes struct {
+    data map[string]types.Message
+}
+
+func (attr *Attributes) SetStringAttribute(key string, value string) {
 
 }
 
-func (attr *Atributes) SetStringAttribute() {
+func (attr *Attributes) GetStringAttribute(key string) string {
+    
+    value, exists := attr.data[key]
+    if !exists {
+        return ""
+    }
 
+    return value
 }
 
-func (attr *Atributes) GetStringAttribute() string {
-
+func (attr *Attributes) GetAttributes() map[string]types.Message {
+    return attr.data
 }
 ```
 
@@ -65,7 +75,7 @@ Great, `Attributes` encapsulates functionality around message attributes and can
 type WebhookJob struct {
     Attributes `json:"-"` // Embed Attributes, drop field in JSON
 
-    TargetID int `json:"target-id"`
+    TargetID int   `json:"target-id"`
     Payload []byte `json:"payload"`
 }
 ```
@@ -73,23 +83,23 @@ type WebhookJob struct {
 Using the things we created up until now is straight forward:
 
 ```go
-job := &WebhookJob {
+msg := &message.WebhookJob {
     TargetID: targetID,
     Payload: payload,
 }
 
-job.SetStringAttribute("some-id", []byte("abc123"))
+msg.SetStringAttribute("some-id", []byte("abc123"))
 ```
 
 ```go
 func NewWebhookJob(targetID int, payload []byte) *WebhookJob {
 
-    job := &WebhookJob{
+    msg := &WebhookJob{
         TargetID: targetID,
         Payload: payload,
     }
 
-    return job
+    return msg
 }
 ```
 
