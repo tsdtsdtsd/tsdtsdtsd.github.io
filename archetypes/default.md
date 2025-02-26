@@ -5,5 +5,5 @@ title = '{{ replace .File.ContentBaseName "-" " " | title }}'
 draft = true
 
 categories = ['Development']
-tags = []
+tags = ['go']
 +++
