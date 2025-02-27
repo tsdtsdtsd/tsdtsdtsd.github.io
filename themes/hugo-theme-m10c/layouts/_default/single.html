@@ -29,7 +29,22 @@
       {{ .Content }}
     </div>
     <div class="post-footer">
-      {{ template "_internal/disqus.html" . }}
+      <script src="https://giscus.app/client.js"
+        data-repo="tsdtsdtsd/tsdtsdtsd.github.io"
+        data-repo-id="R_kgDONwd4fg"
+        data-category="Blog Comments"
+        data-category-id="DIC_kwDONwd4fs4CnZUg"
+        data-mapping="og:title"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="dark_dimmed"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+      </script>
     </div>
   </article>
 {{ end }}
