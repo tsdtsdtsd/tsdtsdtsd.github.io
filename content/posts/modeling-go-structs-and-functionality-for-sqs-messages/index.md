@@ -1,8 +1,8 @@
 +++
-date = '2025-02-24T21:30:14+01:00'
-modified = '2025-02-27T14:52:28+01:00'
+date = '2025-02-27T17:58:28+01:00'
+modified = '2025-02-27T17:58:28+01:00'
 title = 'Modelling Go Structs and Functionality for SQS Messages'
-draft = true
+description = 'Recently we built a background processing service, which uses AWS SQS as its queue. I needed to model our data and the SQS functionality in Go, and I’d like to share my experience and final solution.'
 
 categories = ['Development']
 tags = ['go', 'aws', 'sqs']
@@ -97,7 +97,7 @@ Great, `Attributes` encapsulates functionality around message attributes and can
 
 ```go
 type WebhookJob struct {
-    Attributes `json:"-"` // Embed Attributes, drop field in JSON
+    Attributes `json:"-"` // embed Attributes & drop field in JSON
 
     TargetID int   `json:"target-id"`
     Payload []byte `json:"payload"`
@@ -158,7 +158,7 @@ func (msg *WebhookJob) String() string {
 Now we can quickly build the necessary `*SendMessageInput`:
 
 ```go
-in := &sqs.SendMessageInput{
+input := &sqs.SendMessageInput{
     QueueUrl:          aws.String(myQueueURL),
     MessageBody:       aws.String(msg.String()),
     MessageAttributes: msg.GetAttributes(),
@@ -171,4 +171,5 @@ in := &sqs.SendMessageInput{
 - depending on how you process your messages, you may need to add thread safety with mutexes
 - sending [messages in batches](https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/service/sqs@v1.37.15#Client.SendMessageBatch) needs different input types
 - utilizing generics for different kinds of messages
+- utilizing *options pattern* for nicer constructor functions
 - error handling, logging, default return values
