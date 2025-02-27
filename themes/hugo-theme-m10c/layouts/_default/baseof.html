@@ -14,14 +14,16 @@
     {{ printf `<link rel=%q type=%q href=%q title=%q>` .Rel .MediaType.Type .Permalink site.Title | safeHTML }}
     {{ end }}
 
-    {{ template "_internal/google_analytics.html" . }}
     {{ template "_internal/twitter_cards.html" . }}
     {{ template "_internal/opengraph.html" . }}
+    
+    {{ if eq hugo.Environment "production" }}
+      <script defer src="https://cloud.umami.is/script.js" data-website-id="d92b6366-9958-4d8b-bb7c-e066d194dbbd"></script>
+    {{ end }}
 
   </head>
   <body>
     <header class="app-header">
-      <!-- <a href="{{ "" | relURL }}">orkork.de</a> -->
       <span class="app-header-title">{{ .Site.Title }}</span>
       {{- with .Site.Menus.main }}
       <nav class="app-header-menu">
@@ -52,7 +54,7 @@
       {{ end }}
     </main>
     <footer class="app-footer">
-      <p>{{ .Site.Title }} | Powererd by <a href="https://gohugo.io" target="_blank">Hugo</a></p>
+      <p>{{ .Site.Title }} | Powered by <a href="https://gohugo.io" target="_blank">Hugo</a></p>
       {{- with .Site.Params.social }}
       <p class="app-footer-social">
         {{ range . }}
